@@ -30,10 +30,15 @@ System.register(['angular2/core', './hero'], function(exports_1) {
                     ];
                     this.myHero = this.heroes[0];
                 }
+                AppComponent.prototype.addHero = function (newHero) {
+                    if (newHero) {
+                        this.heroes.push(new hero_1.Hero(12, newHero));
+                    }
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n\t\t<h1>{{title}}</h1>\n\t\t<h2>My favorite hero is: {{myHero.name}}</h2>\n\t\t<p>Heroes:</p>\n\t\t    <ul>\n\t\t      <li *ngFor=\"#hero of heroes\">\n\t\t        {{ hero.name }}\n\t\t      </li>\n\t\t    </ul>\n\t\t<p *ngIf=\"heroes.length > 3\">There are many heroes!</p>\n\t"
+                        template: "\n\t\t<h1>{{title}}</h1>\n\t\t<h2>My favorite hero is: {{myHero.name}}</h2>\n\t\t<input #newHero (keyup.enter)=\"addHero(newHero.value)\" (blur)=\"addHero(newHero.value); newHero.value='' \">\n\t\t<button (click)=addHero(newHero.value)>Add</button>\n\t\t<p>Heroes:</p>\n\t\t    <ul>\n\t\t      <li *ngFor=\"#hero of heroes\">\n\t\t        {{ hero.name }}\n\t\t      </li>\n\t\t    </ul>\n\t\t<p *ngIf=\"heroes.length > 3\">There are many heroes!</p>\n\t"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

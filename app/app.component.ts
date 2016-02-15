@@ -7,6 +7,8 @@ import {Hero} from './hero'
 	template: `
 		<h1>{{title}}</h1>
 		<h2>My favorite hero is: {{myHero.name}}</h2>
+		<input #newHero (keyup.enter)="addHero(newHero.value)" (blur)="addHero(newHero.value); newHero.value='' ">
+		<button (click)=addHero(newHero.value)>Add</button>
 		<p>Heroes:</p>
 		    <ul>
 		      <li *ngFor="#hero of heroes">
@@ -25,4 +27,10 @@ export class AppComponent {
 	  new Hero(20, 'Tornado')
 	];
 	myHero = this.heroes[0];
+
+	addHero(newHero: string){
+		if (newHero) {
+			this.heroes.push(new Hero(12, newHero));
+		}
+	}
 }
