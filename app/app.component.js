@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero'], function(exports_1) {
+System.register(['angular2/core', './hero-form.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,37 +8,25 @@ System.register(['angular2/core', './hero'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_1;
+    var core_1, hero_form_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (hero_1_1) {
-                hero_1 = hero_1_1;
+            function (hero_form_component_1_1) {
+                hero_form_component_1 = hero_form_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Tour of Heros';
-                    this.heroes = [
-                        new hero_1.Hero(1, 'Windstorm'),
-                        new hero_1.Hero(13, 'Bombasto'),
-                        new hero_1.Hero(15, 'Magneta'),
-                        new hero_1.Hero(20, 'Tornado')
-                    ];
-                    this.myHero = this.heroes[0];
                 }
-                AppComponent.prototype.addHero = function (newHero) {
-                    if (newHero) {
-                        this.heroes.push(new hero_1.Hero(12, newHero));
-                    }
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n\t\t<h1>{{title}}</h1>\n\t\t<h2>My favorite hero is: {{myHero.name}}</h2>\n\t\t<input #newHero (keyup.enter)=\"addHero(newHero.value)\" (blur)=\"addHero(newHero.value); newHero.value='' \">\n\t\t<button (click)=addHero(newHero.value)>Add</button>\n\t\t<p>Heroes:</p>\n\t\t    <ul>\n\t\t      <li *ngFor=\"#hero of heroes\">\n\t\t        {{ hero.name }}\n\t\t      </li>\n\t\t    </ul>\n\t\t<p *ngIf=\"heroes.length > 3\">There are many heroes!</p>\n\t"
+                        template: '<hero-form></hero-form>',
+                        directives: [hero_form_component_1.HeroFormComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
